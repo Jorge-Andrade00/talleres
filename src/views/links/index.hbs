@@ -1,0 +1,78 @@
+{{#if user}}
+<div id="contenedor" class="row">
+  <h6 id="id_usuario" style="display: none;">{{user.id_usuario}}</h6>
+  {{#each links}}
+  <div class="col-md-4">
+    <form id={{id_taller}}>
+      <div class="card text-center" style="width: 18rem;">
+        <img class="card-img-top"
+          src="https://i.pinimg.com/236x/3a/e5/bd/3ae5bdf33b942f69443ba1b9ffa5eca9--ice-age-pet.jpg"
+          alt="Card image cap">
+        <div class="card-header">
+          {{nombre}}
+        </div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Publicado: {{publicacion}}</li>
+            <li class="list-group-item">Fecha inicio: {{inicio}}</li>
+            <li class="list-group-item">Dirección: {{direccion}}</li>
+            <li class="list-group-item">Organizador: {{organizador}}</li>
+          </ul>
+          <p class="card-text">{{descrpcion}}</p>
+          <button id="join" type="submit" class="btn btn-success btn-block">Inscribir taller</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  {{/each}}
+  <script>
+    const selected = document.getElementById('contenedor')
+    selected.addEventListener('submit', (e) => {
+      e.preventDefault()
+      var taller = e.target.id
+      var usuario = document.getElementById('id_usuario').textContent
+
+      const inscripcion = {
+        usuario: usuario,
+        taller: taller
+      }
+
+      fetch('/inscripcion', {
+        method: 'POST',
+        body: JSON.stringify(inscripcion),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+
+    })
+  </script>
+</div>
+{{else}}
+<div id="contenedor" class="row">
+  {{#each links}}
+  <div class="col-md-4">
+    <form id={{id_taller}}>
+      <div class="card text-center" style="width: 18rem;">
+        <img class="card-img-top"
+          src="https://i.pinimg.com/236x/3a/e5/bd/3ae5bdf33b942f69443ba1b9ffa5eca9--ice-age-pet.jpg"
+          alt="Card image cap">
+        <div class="card-header">
+          {{nombre}}
+        </div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Publicado: {{publicacion}}</li>
+            <li class="list-group-item">Fecha inicio: {{inicio}}</li>
+            <li class="list-group-item">Dirección: {{direccion}}</li>
+            <li class="list-group-item">Organizador: {{organizador}}</li>
+          </ul>
+          <p class="card-text">{{descrpcion}}</p>
+          <a href="/signin" class="btn btn-success btn-block">Inscribir taller</a>
+        </div>
+      </div>
+    </form>
+  </div>
+  {{/each}}
+</div>
+{{/if}}
