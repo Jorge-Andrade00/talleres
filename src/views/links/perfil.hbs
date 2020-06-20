@@ -3,7 +3,7 @@
     {{#each talleres}}
 
     <form id={{fk_id_taller}}>
-        <h4>nombre del taller: {{nombre}}</h4>
+        <h4 class="tName" id="tName">nombre del taller: {{nombre}}</h4>
         <button type="submit" class="btn btn-danger btn-block">Abandonar taller</button>
     </form>
 
@@ -31,7 +31,10 @@
                 'Content-Type': 'application/json'
             }
         })
-        location.reload()
+        .then(res => res.json())
+        .then(data =>{
+            location.reload()
+        })
     })
 
 </script>

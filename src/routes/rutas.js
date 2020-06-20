@@ -44,7 +44,7 @@ router.post('/signup', passport.authenticate('local-signup', {
 
 router.post('/signin', (req, res, next) => {
     passport.authenticate('local-signin', {
-        successRedirect: '/perfil',
+        successRedirect: '/index',
         failureRedirect: '/signin',
         failureFlash: true
     })(req, res, next)
@@ -100,7 +100,7 @@ router.post('/delete', async(req, res, next)=>{
     `
 
     talleres = await pool.query(query2)
-    
+    res.send(JSON.stringify(query))
 
 })
 

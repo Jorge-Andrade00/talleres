@@ -11,6 +11,9 @@
 
 
     <title>Talleres</title>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    
 
 
 </head>
@@ -32,10 +35,18 @@
             {{#if user}}
 
             <a href="/logout" class="nav-link">Salir</a>
+            <button class="switch" id="switch">
+                <span><i class="fas fa-sun"></i></span>
+                <span><i class="fas fa-moon"></i></span>
+            </button>
 
             {{else}}
 
             <a href="/signin" class="nav-link">Iniciar Sesión</a>
+            <button class="switch" id="switch">
+                <span><i class="fas fa-sun"></i></span>
+                <span><i class="fas fa-moon"></i></span>
+            </button>
 
             {{/if}}
         </form>
@@ -77,6 +88,7 @@
             })
         }
     </script>
+    <script src="js/main.js"></script>
 
 </body>
 
