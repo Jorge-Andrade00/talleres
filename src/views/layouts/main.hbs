@@ -11,6 +11,7 @@
 
 
     <title>Talleres</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/styles.css">
     
@@ -23,9 +24,7 @@
         <!-- Navbar content -->
         <a class="navbar-brand" href="/index">Talleres</a>
 
-        <a class="nav-link" href="#">Nosotros <span class="sr-only">(current)</span></a>
-
-        <a class="nav-link" href="#">Contacto</a>
+        
         {{#if user}}
         <a class="nav-link" onclick="sendId()" href="/perfil">Mis talleres</a>
         {{/if}}
